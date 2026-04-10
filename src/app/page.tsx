@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppStore } from "@/store/useAppStore";
 import { useRecorder } from "@/hooks/useRecorder";
 
@@ -18,6 +18,27 @@ import AudioPlayer from "@/components/results/AudioPlayer";
 export default function Home() {
   const store = useAppStore();
   const { isRecording, seconds, stream, startRecording, stopRecording } = useRecorder();
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [passwordInput, setPasswordInput] = useState("");
+  const [authError, setAuthError] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("app_password_andressa") === "110721") {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passwordInput === "110721") {
+      localStorage.setItem("app_password_andressa", "110721");
+      setIsAuthenticated(true);
+      setAuthError(false);
+    } else {
+      setAuthError(true);
+    }
+  };
 
   // Função principal que orquestra o pipeline ao parar de gravar
   const handleToggleRecord = async () => {
@@ -111,6 +132,45 @@ export default function Home() {
   const showResults = Boolean(store.originalText || store.translatedText);
   const isPortuguese = store.detectedLanguage === "pt" || store.detectedLanguage?.toLowerCase() === "portuguese";
   const targetLanguageTag = isPortuguese ? "en" : "pt";
+
+  if (!isAuthenticated) {
+    return (
+      <main className="flex flex-col items-center justify-center px-4 w-full h-[80vh] max-w-[400px]">
+        <div className="bg-white border border-[#222222]/10 p-8 rounded-2xl shadow-xl w-full flex flex-col items-center">
+          <div className="w-12 h-12 bg-[#222222] rounded-xl flex items-center justify-center mb-6 shadow-md">
+            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <h1 className="text-xl font-bold text-[#222222] mb-2 font-[family-name:var(--font-syne)]">Acesso Restrito</h1>
+          <p className="text-sm text-gray-500 mb-6 text-center">Digite a senha para acessar o Tradutor de Voz.</p>
+          
+          <form onSubmit={handleLogin} className="w-full flex flex-col gap-4">
+            <div>
+              <input
+                type="password"
+                placeholder="Senha"
+                value={passwordInput}
+                onChange={(e) => {
+                  setPasswordInput(e.target.value);
+                  setAuthError(false);
+                }}
+                className={`w-full px-4 py-3 rounded-xl border ${authError ? 'border-red-500 bg-red-50' : 'border-gray-200 bg-gray-50'} outline-none focus:border-[#222222] transition-colors`}
+              />
+              {authError && <p className="text-xs text-red-500 mt-2 ml-1">Senha incorreta</p>}
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-[#222222] hover:bg-[#111111] text-white font-medium py-3 rounded-xl transition-colors shadow-md"
+            >
+              Entrar
+            </button>
+          </form>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="flex flex-col items-center px-4 w-full max-w-[560px] relative z-10 w-full">

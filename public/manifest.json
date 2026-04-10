@@ -1,0 +1,28 @@
+{
+  "name": "Tradutor de Voz",
+  "short_name": "Tradutor",
+  "description": "Grave, transcreva e traduza sua voz instantaneamente.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#222222",
+  "categories": ["utilities", "productivity"],
+  "icons": [
+    {
+      "src": "/globe.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/globe.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/globe.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
