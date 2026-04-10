@@ -135,18 +135,24 @@ export default function Home() {
 
   if (!isAuthenticated) {
     return (
-      <main className="flex flex-col items-center justify-center px-4 w-full h-[80vh] max-w-[400px]">
-        <div className="bg-white border border-[#222222]/10 p-8 rounded-2xl shadow-xl w-full flex flex-col items-center">
-          <div className="w-12 h-12 bg-[#222222] rounded-xl flex items-center justify-center mb-6 shadow-md">
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <main className="flex flex-col items-center justify-center w-full" style={{ padding: '0 1rem', minHeight: '80vh', maxWidth: '400px', margin: '0 auto' }}>
+        <div 
+          className="bg-white rounded-2xl shadow-xl w-full flex flex-col items-center"
+          style={{ padding: '2rem', border: '1px solid rgba(0,0,0,0.1)' }}
+        >
+          <div 
+            className="bg-[#222222] rounded-xl flex items-center justify-center shadow-md"
+            style={{ width: '3rem', height: '3rem', marginBottom: '1.5rem' }}
+          >
+            <svg viewBox="0 0 24 24" fill="none" className="text-white" style={{ width: '1.5rem', height: '1.5rem' }} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
               <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
             </svg>
           </div>
-          <h1 className="text-xl font-bold text-[#222222] mb-2 font-[family-name:var(--font-syne)]">Acesso Restrito</h1>
-          <p className="text-sm text-gray-500 mb-6 text-center">Digite a senha para acessar o Tradutor de Voz.</p>
+          <h1 className="font-bold text-[#222222] font-[family-name:var(--font-syne)]" style={{ fontSize: '1.25rem', marginBottom: '0.5rem', lineHeight: '1.2' }}>Acesso Restrito</h1>
+          <p className="text-gray-500 text-center" style={{ fontSize: '0.875rem', marginBottom: '1.5rem', lineHeight: '1.4' }}>Digite a senha para acessar o Tradutor de Voz.</p>
           
-          <form onSubmit={handleLogin} className="w-full flex flex-col gap-4">
+          <form onSubmit={handleLogin} className="w-full flex flex-col" style={{ gap: '1rem' }}>
             <div>
               <input
                 type="password"
@@ -156,13 +162,19 @@ export default function Home() {
                   setPasswordInput(e.target.value);
                   setAuthError(false);
                 }}
-                className={`w-full px-4 py-3 rounded-xl border ${authError ? 'border-red-500 bg-red-50' : 'border-gray-200 bg-gray-50'} outline-none focus:border-[#222222] transition-colors`}
+                className={`w-full rounded-xl outline-none transition-colors`}
+                style={{ 
+                  padding: '0.75rem 1rem', 
+                  backgroundColor: authError ? '#fef2f2' : '#f9fafb',
+                  border: authError ? '1px solid #ef4444' : '1px solid #e5e7eb',
+                }}
               />
-              {authError && <p className="text-xs text-red-500 mt-2 ml-1">Senha incorreta</p>}
+              {authError && <p className="text-red-500" style={{ fontSize: '0.75rem', marginTop: '0.5rem', marginLeft: '0.25rem' }}>Senha incorreta</p>}
             </div>
             <button
               type="submit"
-              className="w-full bg-[#222222] hover:bg-[#111111] text-white font-medium py-3 rounded-xl transition-colors shadow-md"
+              className="w-full bg-[#222222] hover:bg-[#111111] text-white font-medium rounded-xl transition-colors shadow-md"
+              style={{ padding: '0.75rem 0', height: '3rem' }}
             >
               Entrar
             </button>

@@ -102,29 +102,37 @@ export function PWAInstallBanner() {
         className="fixed bottom-0 left-0 right-0 z-[999] px-4 pb-6 pt-1 sm:bottom-6 sm:left-auto sm:right-6 sm:max-w-sm"
         style={{ animation: 'slideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both' }}
       >
-        <div className="relative rounded-2xl bg-white border border-[#222222]/10 shadow-2xl overflow-hidden">
+        <div 
+          className="relative rounded-2xl bg-white shadow-2xl overflow-hidden pointer-events-auto"
+          style={{ border: '1px solid rgba(0,0,0,0.1)' }}
+        >
           {/* Accent line */}
-          <div className="h-1 w-full bg-gradient-to-r from-[#222222] via-[#4a9c71] to-[#222222]" />
+          <div className="w-full bg-gradient-to-r from-[#222222] via-[#4a9c71] to-[#222222]" style={{ height: '4px' }} />
 
-          <div className="p-5">
-            <div className="flex items-start justify-between gap-3 mb-4">
-              <div className="flex items-center gap-3">
-                <div className="relative flex-shrink-0 bg-[#222222] p-2 rounded-xl shadow-lg">
+          <div style={{ padding: '1.25rem' }}>
+            <div className="flex items-start justify-between mb-4" style={{ gap: '0.75rem' }}>
+              <div className="flex items-center" style={{ gap: '0.75rem' }}>
+                <div 
+                  className="relative flex-shrink-0 bg-[#222222] rounded-xl shadow-lg flex items-center justify-center"
+                  style={{ width: '3rem', height: '3rem', padding: '0.5rem' }}
+                >
                   <img
                     src="/globe.svg"
                     alt="Tradutor"
-                    className="w-8 h-8 filter invert"
+                    className="filter invert"
+                    style={{ width: '100%', height: '100%' }}
                   />
                 </div>
                 <div>
                   <p className="font-bold text-[#222222] text-sm leading-tight">Tradutor de Voz</p>
-                  <p className="text-xs text-gray-500 mt-0.5">Ferramenta Rápida</p>
+                  <p className="text-gray-500" style={{ fontSize: '11px', marginTop: '2px' }}>Ferramenta Rápida</p>
                 </div>
               </div>
               <button
                 onClick={handleDismiss}
-                className="flex-shrink-0 p-1 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors font-bold text-lg leading-none"
+                className="flex-shrink-0 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors font-bold leading-none flex items-center justify-center"
                 aria-label="Fechar"
+                style={{ padding: '0.5rem', width: '2rem', height: '2rem', fontSize: '1.25rem' }}
               >
                 ×
               </button>
@@ -135,33 +143,44 @@ export function PWAInstallBanner() {
             </p>
 
             {isIOSDevice ? (
-              <div className="rounded-xl bg-gray-50 border border-gray-100 p-3 mb-4">
+              <div 
+                className="rounded-xl bg-gray-50 border border-gray-100 mb-4"
+                style={{ padding: '0.75rem' }}
+              >
                 <p className="text-xs text-gray-700 font-medium mb-2">Como instalar no iPhone:</p>
-                <ol className="space-y-1.5">
-                  <li className="flex items-center gap-2 text-xs text-gray-600">
-                    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#222222]/10 text-[#222222] flex items-center justify-center text-[10px] font-bold">1</span>
+                <ol style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  <li className="flex items-center text-xs text-gray-600" style={{ gap: '0.5rem' }}>
+                    <span 
+                      className="flex-shrink-0 rounded-full font-bold flex items-center justify-center"
+                      style={{ backgroundColor: 'rgba(34,34,34,0.1)', color: '#222222', width: '1.25rem', height: '1.25rem', fontSize: '10px' }}
+                    >1</span>
                     Toque no botão de <strong>Compartilhar</strong>
                   </li>
-                  <li className="flex items-center gap-2 text-xs text-gray-600">
-                    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#222222]/10 text-[#222222] flex items-center justify-center text-[10px] font-bold">2</span>
+                  <li className="flex items-center text-xs text-gray-600" style={{ gap: '0.5rem' }}>
+                    <span 
+                      className="flex-shrink-0 rounded-full font-bold flex items-center justify-center"
+                      style={{ backgroundColor: 'rgba(34,34,34,0.1)', color: '#222222', width: '1.25rem', height: '1.25rem', fontSize: '10px' }}
+                    >2</span>
                     Selecione <strong>&quot;Adicionar à Tela de Início&quot;</strong>
                   </li>
                 </ol>
               </div>
             ) : null}
 
-            <div className="flex gap-2">
+            <div className="flex" style={{ gap: '0.5rem' }}>
               {!isIOSDevice && (
                 <button
                   onClick={handleInstall}
-                  className="flex-1 flex items-center justify-center gap-2 bg-[#222222] hover:bg-[#111111] text-white text-sm font-semibold rounded-xl h-11 transition-colors shadow-lg"
+                  className="flex-1 flex items-center justify-center bg-[#222222] hover:bg-[#111111] text-white text-sm font-semibold rounded-xl transition-colors shadow-lg"
+                  style={{ height: '2.75rem' }}
                 >
                   Instalar Agora
                 </button>
               )}
               <button
                 onClick={handleDismiss}
-                className={`flex items-center justify-center text-gray-600 hover:text-[#222222] text-sm font-medium rounded-xl h-11 transition-colors border border-gray-200 hover:bg-gray-50 ${isIOSDevice ? 'flex-1' : 'px-4'}`}
+                className={`flex items-center justify-center text-gray-600 hover:text-[#222222] text-sm font-medium rounded-xl transition-colors border border-gray-200 hover:bg-gray-50 ${isIOSDevice ? 'flex-1' : ''}`}
+                style={{ height: '2.75rem', padding: isIOSDevice ? '0' : '0 1rem' }}
               >
                 Agora não
               </button>
