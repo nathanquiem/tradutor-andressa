@@ -37,9 +37,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/globe.svg", sizes: "any", type: "image/svg+xml" },
+      { url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
     ],
-    apple: [{ url: "/globe.svg", sizes: "180x180" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
 };
 

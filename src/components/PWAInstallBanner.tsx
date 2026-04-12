@@ -117,7 +117,7 @@ export function PWAInstallBanner() {
                   style={{ width: '3rem', height: '3rem', padding: '0.5rem' }}
                 >
                   <img
-                    src="/globe.svg"
+                    src="/apple-touch-icon.png"
                     alt="Tradutor"
                     className="filter invert"
                     style={{ width: '100%', height: '100%' }}

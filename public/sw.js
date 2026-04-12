@@ -3,7 +3,9 @@ const CACHE_NAME = 'andressa-v1';
 const STATIC_ASSETS = [
   '/',
   '/manifest.json',
-  '/globe.svg',
+  '/android-chrome-192x192.png',
+  '/android-chrome-512x512.png',
+  '/apple-touch-icon.png',
 ];
 
 self.addEventListener('install', (event) => {
