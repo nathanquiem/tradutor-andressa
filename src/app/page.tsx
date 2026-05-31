@@ -135,12 +135,12 @@ export default function Home() {
 
   if (!isAuthenticated) {
     return (
-      <main className="flex flex-col items-center justify-center w-full mx-auto" style={{ padding: '0 10px', minHeight: '80vh', maxWidth: '400px' }}>
+      <main className="flex flex-col items-center justify-center w-full" style={{ padding: '0 10px', minHeight: '100vh', maxWidth: '400px', margin: '0 auto' }}>
         <div 
-          className="rounded-3xl shadow-[0_8px_32px_rgba(31,38,135,0.07)] w-full flex flex-col items-center relative overflow-hidden"
+          className="rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] w-full flex flex-col items-center relative overflow-hidden"
           style={{ 
             padding: '2.5rem 2rem', 
-            background: 'var(--surface)',
+            background: '#ffffff',
             border: '1px solid var(--border-strong)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)'
@@ -201,7 +201,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col items-center px-[10px] mx-auto w-full max-w-[560px] relative z-10 pt-8 pb-20 min-h-screen">
+    <main className="flex flex-col items-center px-[10px] w-full max-w-[560px] relative z-10 pt-8 pb-20 min-h-screen" style={{ margin: '0 auto' }}>
       <Header />
 
       <div className="flex flex-col flex-1 items-center w-full gap-6">

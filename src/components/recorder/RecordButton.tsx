@@ -21,9 +21,8 @@ export default function RecordButton({
       whileTap={!isProcessing ? { scale: 0.95 } : undefined}
       className="relative w-[88px] h-[88px] rounded-full flex items-center justify-center outline-none cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed transition-shadow shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
       style={{
-        background: isRecording ? "var(--red-dim)" : "rgba(255, 255, 255, 0.6)",
-        border: `1.5px solid ${isRecording ? "var(--red)" : "rgba(255, 255, 255, 0.8)"}`,
-        backdropFilter: "blur(8px)",
+        background: isRecording ? "var(--red-dim)" : "var(--surface)",
+        border: `1.5px solid ${isRecording ? "var(--red)" : "var(--border-strong)"}`,
       }}
     >
       {/* Pulse ring animation when recording */}

@@ -24,11 +24,9 @@ export default function TranscriptCard({
       transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="p-5 rounded-[var(--radius)]"
       style={{
-        background: "rgba(255, 255, 255, 0.4)",
-        border: "1px solid rgba(255, 255, 255, 0.8)",
-        boxShadow: "0 8px 32px rgba(31, 38, 135, 0.05)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)"
+        background: "var(--surface)",
+        border: "1px solid var(--border-strong)",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.04)",
       }}
     >
       <div className="flex items-center justify-between mb-3">
