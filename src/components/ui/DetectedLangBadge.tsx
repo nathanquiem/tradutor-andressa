@@ -58,8 +58,10 @@ export default function DetectedLangBadge({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9 }}
           transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 25 }}
-          className="flex items-center gap-2 px-4 py-2 rounded-full font-[family-name:var(--font-dm-mono)] text-xs tracking-[0.06em]"
+          className="flex items-center rounded-full font-[family-name:var(--font-dm-mono)] text-xs tracking-[0.06em]"
           style={{
+            padding: "14px 24px",
+            gap: "12px",
             background: "var(--accent-dim)",
             border: "1px solid var(--accent-border)",
             color: "var(--accent)",
