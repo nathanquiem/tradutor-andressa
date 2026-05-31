@@ -283,14 +283,14 @@ export default function Home() {
             visible={showResults}
           />
 
+          <AudioPlayer audioUrl={store.audioUrl} visible={Boolean(store.audioUrl)} />
+
           <TranscriptCard
             type="translated"
             language={targetLanguageTag}
             text={store.translatedText}
             visible={showResults}
           />
-
-          <AudioPlayer audioUrl={store.audioUrl} visible={Boolean(store.audioUrl)} />
         </div>
       </div>
 

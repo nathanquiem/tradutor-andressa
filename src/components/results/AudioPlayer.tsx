@@ -32,8 +32,10 @@ export default function AudioPlayer({ audioUrl, visible }: AudioPlayerProps) {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
-      className="flex flex-col sm:flex-row sm:items-center gap-4"
       style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
         padding: "20px 24px",
         width: "100%",
         borderRadius: "var(--radius)",
@@ -43,61 +45,91 @@ export default function AudioPlayer({ audioUrl, visible }: AudioPlayerProps) {
     >
       <audio ref={audioRef} src={audioUrl} className="hidden" />
 
-      <button
-        onClick={togglePlay}
-        className="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center outline-none transition-transform hover:scale-105"
-        style={{
-          border: "1.5px solid var(--accent-border)",
-          background: "var(--accent-dim)",
-          color: "var(--accent)",
-        }}
-      >
-        {!isPlaying ? (
-          <span className="text-sm ml-0.5">▶</span>
-        ) : (
-          <span className="text-sm">⏸</span>
-        )}
-      </button>
-
-      <div className="flex-1 min-w-0">
-        <div
-          className="text-[11px] font-medium uppercase tracking-[0.1em] mb-1.5 font-[family-name:var(--font-dm-mono)]"
-          style={{ color: "var(--accent)" }}
-        >
-          dublagem gerada
-        </div>
-        <div
-          className="w-full h-[3px] rounded-sm cursor-pointer relative"
-          style={{ background: "var(--border)" }}
-          onClick={handleProgressClick}
-        >
-          <div
-            className="h-full rounded-sm pointer-events-none transition-all duration-100 ease-linear"
+      {/* Linha Superior: Play + Info + Download */}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <button
+            onClick={togglePlay}
             style={{
-              background: "var(--accent)",
-              width: `${progress * 100}%`,
+              width: 40,
+              height: 40,
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              border: "1.5px solid var(--accent-border)",
+              background: "var(--accent-dim)",
+              color: "var(--accent)",
+              cursor: "pointer",
+              outline: "none",
             }}
-          />
+            className="transition-transform hover:scale-105"
+          >
+            {!isPlaying ? (
+              <span style={{ fontSize: 14, marginLeft: 2 }}>▶</span>
+            ) : (
+              <span style={{ fontSize: 14 }}>⏸</span>
+            )}
+          </button>
+
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <span
+              className="font-[family-name:var(--font-dm-mono)]"
+              style={{ fontSize: 11, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--accent)" }}
+            >
+              dublagem gerada
+            </span>
+            <span
+              className="font-[family-name:var(--font-dm-mono)]"
+              style={{ fontSize: 11, color: "var(--text-dim)", marginTop: 2 }}
+            >
+              {formatTime(currentTime)} / {formatTime(duration)}
+            </span>
+          </div>
         </div>
-        <div
-          className="text-[11px] mt-1.5 font-[family-name:var(--font-dm-mono)]"
-          style={{ color: "var(--text-dim)" }}
+
+        <button
+          onClick={handleDownload}
+          className="font-[family-name:var(--font-dm-mono)] transition-colors hover:text-[var(--text)]"
+          style={{
+            padding: "8px 14px",
+            borderRadius: "var(--radius-sm)",
+            fontSize: 11,
+            letterSpacing: "0.05em",
+            textTransform: "uppercase",
+            background: "transparent",
+            border: "1px solid var(--border)",
+            color: "var(--text-muted)",
+            cursor: "pointer",
+          }}
         >
-          {formatTime(currentTime)} / {formatTime(duration)}
-        </div>
+          baixar
+        </button>
       </div>
 
-      <button
-        onClick={handleDownload}
-        className="self-end sm:self-center px-[14px] py-2 rounded-[var(--radius-sm)] text-[11px] tracking-[0.05em] uppercase font-[family-name:var(--font-dm-mono)] transition-colors hover:text-[var(--text)] whitespace-nowrap"
+      {/* Linha Inferior: Barra de Progresso */}
+      <div
         style={{
-          background: "none",
-          border: "1px solid var(--border)",
-          color: "var(--text-muted)",
+          width: "100%",
+          height: 4,
+          borderRadius: 2,
+          background: "var(--border)",
+          cursor: "pointer",
+          position: "relative",
         }}
+        onClick={handleProgressClick}
       >
-        baixar
-      </button>
+        <div
+          style={{
+            height: "100%",
+            borderRadius: 2,
+            background: "var(--accent)",
+            width: `${progress * 100}%`,
+            pointerEvents: "none",
+            transition: "width 0.1s linear",
+          }}
+        />
+      </div>
     </motion.div>
   );
 }
