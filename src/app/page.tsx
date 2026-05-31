@@ -275,7 +275,7 @@ export default function Home() {
         />
 
         {/* Resultados */}
-        <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: 24, marginTop: 8 }}>
+        <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: 24, marginTop: 40 }}>
           <TranscriptCard
             type="original"
             language={store.detectedLanguage || "???"}
