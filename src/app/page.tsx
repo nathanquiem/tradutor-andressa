@@ -244,13 +244,14 @@ export default function Home() {
         width: "100%",
         maxWidth: 560,
         margin: "0 auto",
-        padding: "40px 16px 80px",
+        padding: "40px 16px 100px", // Padding bottom extra para o rodapé absolute
         minHeight: "100dvh",
+        position: "relative",
       }}
     >
-      <Header />
+      <div style={{ margin: "auto 0", width: "100%", display: "flex", flexDirection: "column", alignItems: "center", gap: 24 }}>
+        <Header />
 
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", gap: 24, flex: 1 }}>
         {/* Container principal de gravação */}
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 24, width: "100%", marginBottom: 24 }}>
           <Timer seconds={seconds} visible={isRecording} />
@@ -274,7 +275,7 @@ export default function Home() {
         />
 
         {/* Resultados */}
-        <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: 16, marginTop: 16 }}>
+        <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: 24, marginTop: 8 }}>
           <TranscriptCard
             type="original"
             language={store.detectedLanguage || "???"}
@@ -295,15 +296,15 @@ export default function Home() {
 
       <footer
         style={{
+          position: "absolute",
+          bottom: 24,
+          left: 0,
           width: "100%",
           textAlign: "center",
           fontSize: 10,
           textTransform: "uppercase",
           letterSpacing: "0.1em",
           color: "var(--text-muted)",
-          marginTop: "auto",
-          paddingTop: 32,
-          paddingBottom: 16,
         }}
         className="font-[family-name:var(--font-dm-mono)]"
       >

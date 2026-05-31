@@ -32,10 +32,13 @@ export default function AudioPlayer({ audioUrl, visible }: AudioPlayerProps) {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
-      className="flex flex-col sm:flex-row sm:items-center gap-4 p-[18px] px-[22px] rounded-[var(--radius)]"
+      className="flex flex-col sm:flex-row sm:items-center gap-4"
       style={{
+        padding: "20px 24px",
+        width: "100%",
+        borderRadius: "var(--radius)",
         background: "var(--surface)",
-        border: "1px solid var(--accent-border)",
+        border: "1px solid var(--border-strong)",
       }}
     >
       <audio ref={audioRef} src={audioUrl} className="hidden" />
