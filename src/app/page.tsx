@@ -137,20 +137,30 @@ export default function Home() {
     return (
       <main className="flex flex-col items-center justify-center w-full" style={{ padding: '0 1rem', minHeight: '80vh', maxWidth: '400px', margin: '0 auto' }}>
         <div 
-          className="bg-white rounded-2xl shadow-xl w-full flex flex-col items-center"
-          style={{ padding: '2rem', border: '1px solid rgba(0,0,0,0.1)' }}
+          className="rounded-3xl shadow-[0_8px_32px_rgba(31,38,135,0.07)] w-full flex flex-col items-center relative overflow-hidden"
+          style={{ 
+            padding: '2.5rem 2rem', 
+            background: 'var(--surface)',
+            border: '1px solid var(--border-strong)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)'
+          }}
         >
           <div 
-            className="bg-[#222222] rounded-xl flex items-center justify-center shadow-md"
-            style={{ width: '3rem', height: '3rem', marginBottom: '1.5rem' }}
+            className="rounded-2xl flex items-center justify-center shadow-sm"
+            style={{ 
+              width: '4rem', height: '4rem', marginBottom: '1.5rem',
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.4))',
+              border: '1px solid var(--border-strong)',
+            }}
           >
-            <svg viewBox="0 0 24 24" fill="none" className="text-white" style={{ width: '1.5rem', height: '1.5rem' }} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" className="text-[#0284c7]" style={{ width: '1.75rem', height: '1.75rem' }} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
               <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
             </svg>
           </div>
-          <h1 className="font-bold text-[#222222] font-[family-name:var(--font-syne)]" style={{ fontSize: '1.25rem', marginBottom: '0.5rem', lineHeight: '1.2' }}>Acesso Restrito</h1>
-          <p className="text-gray-500 text-center" style={{ fontSize: '0.875rem', marginBottom: '1.5rem', lineHeight: '1.4' }}>Digite a senha para acessar o Tradutor de Voz.</p>
+          <h1 className="font-extrabold tracking-tight" style={{ color: 'var(--text)', fontSize: '1.75rem', marginBottom: '0.5rem', lineHeight: '1.2' }}>Acesso Restrito</h1>
+          <p className="text-center font-medium" style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '2rem', lineHeight: '1.4' }}>Digite a senha para acessar o Tradutor de Voz.</p>
           
           <form onSubmit={handleLogin} className="w-full flex flex-col" style={{ gap: '1rem' }}>
             <div>
@@ -162,21 +172,27 @@ export default function Home() {
                   setPasswordInput(e.target.value);
                   setAuthError(false);
                 }}
-                className={`w-full rounded-xl outline-none transition-colors`}
+                className={`w-full rounded-2xl outline-none transition-all shadow-inner`}
                 style={{ 
-                  padding: '0.75rem 1rem', 
-                  backgroundColor: authError ? '#fef2f2' : '#f9fafb',
-                  border: authError ? '1px solid #ef4444' : '1px solid #e5e7eb',
+                  padding: '1rem 1.25rem', 
+                  backgroundColor: authError ? 'var(--red-dim)' : 'rgba(255,255,255,0.7)',
+                  border: authError ? '1px solid var(--red)' : '1px solid var(--border-strong)',
+                  color: 'var(--text)',
                 }}
               />
               {authError && <p className="text-red-500" style={{ fontSize: '0.75rem', marginTop: '0.5rem', marginLeft: '0.25rem' }}>Senha incorreta</p>}
             </div>
             <button
               type="submit"
-              className="w-full bg-[#222222] hover:bg-[#111111] text-white font-medium rounded-xl transition-colors shadow-md"
-              style={{ padding: '0.75rem 0', height: '3rem' }}
+              className="w-full font-bold rounded-2xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+              style={{ 
+                padding: '1rem 0', 
+                background: 'linear-gradient(135deg, #0ea5e9, #0284c7)',
+                color: '#ffffff',
+                border: 'none',
+              }}
             >
-              Entrar
+              Autenticar
             </button>
           </form>
         </div>
