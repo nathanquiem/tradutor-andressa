@@ -14,7 +14,7 @@ export default function Header() {
         className="text-[28px] font-extrabold tracking-[-0.04em]"
         style={{ color: "var(--text)" }}
       >
-        tradutor neural
+        tradutor de voz
       </h1>
     </motion.header>
   );

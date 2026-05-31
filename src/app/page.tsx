@@ -135,7 +135,7 @@ export default function Home() {
 
   if (!isAuthenticated) {
     return (
-      <main className="flex flex-col items-center justify-center w-full" style={{ padding: '0 1rem', minHeight: '80vh', maxWidth: '400px', margin: '0 auto' }}>
+      <main className="flex flex-col items-center justify-center w-full mx-auto" style={{ padding: '0 10px', minHeight: '80vh', maxWidth: '400px' }}>
         <div 
           className="rounded-3xl shadow-[0_8px_32px_rgba(31,38,135,0.07)] w-full flex flex-col items-center relative overflow-hidden"
           style={{ 
@@ -201,7 +201,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col items-center px-4 w-full max-w-[560px] relative z-10 w-full">
+    <main className="flex flex-col items-center px-[10px] mx-auto w-full max-w-[560px] relative z-10 pt-8 pb-20 min-h-screen">
       <Header />
 
       <div className="flex flex-col flex-1 items-center w-full gap-6">
@@ -247,7 +247,7 @@ export default function Home() {
         </div>
       </div>
 
-      <footer className="fixed bottom-6 w-full left-0 text-center text-[10px] uppercase tracking-[0.1em] font-[family-name:var(--font-dm-mono)]" style={{ color: "var(--text-muted)" }}>
+      <footer className="w-full text-center text-[10px] uppercase tracking-[0.1em] font-[family-name:var(--font-dm-mono)] mt-auto pt-8 pb-4" style={{ color: "var(--text-muted)" }}>
         <span className="block mb-1">Desenvolvido por</span>
         <a 
           href="https://nathanquiem.com.br" 
