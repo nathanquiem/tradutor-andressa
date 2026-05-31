@@ -25,15 +25,14 @@ export default function TranscriptCard({
       className="p-5 rounded-[var(--radius)]"
       style={{
         background: "var(--surface)",
-        border: "1px solid var(--border-strong)",
-        boxShadow: "0 4px 20px rgba(0,0,0,0.04)",
+        border: "1px solid var(--border)",
       }}
     >
       <div className="flex items-center justify-between mb-3">
         <span
           className="text-[10px] font-medium uppercase tracking-[0.12em] font-[family-name:var(--font-dm-mono)]"
           style={{
-            color: type === "translated" ? "var(--accent)" : "rgba(240,237,232,0.35)",
+            color: type === "translated" ? "var(--accent)" : "var(--text-dim)",
           }}
         >
           {type} · {language}

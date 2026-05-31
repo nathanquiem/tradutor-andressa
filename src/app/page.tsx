@@ -133,36 +133,63 @@ export default function Home() {
   const isPortuguese = store.detectedLanguage === "pt" || store.detectedLanguage?.toLowerCase() === "portuguese";
   const targetLanguageTag = isPortuguese ? "en" : "pt";
 
+  /* ──────────── TELA DE LOGIN ──────────── */
   if (!isAuthenticated) {
     return (
-      <main className="flex flex-col items-center justify-center w-full" style={{ padding: '0 10px', minHeight: '100vh', maxWidth: '400px', margin: '0 auto' }}>
-        <div 
-          className="rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] w-full flex flex-col items-center relative overflow-hidden"
-          style={{ 
-            padding: '2.5rem 2rem', 
-            background: '#ffffff',
-            border: '1px solid var(--border-strong)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)'
+      <main
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+          maxWidth: 400,
+          margin: "0 auto",
+          padding: "0 16px",
+          minHeight: "100dvh",
+        }}
+      >
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            padding: "2.5rem 2rem",
+            background: "rgba(255,255,255,0.85)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            borderRadius: 20,
+            border: "1px solid var(--border-strong)",
+            boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
           }}
         >
-          <div 
-            className="rounded-2xl flex items-center justify-center shadow-sm"
-            style={{ 
-              width: '4rem', height: '4rem', marginBottom: '1.5rem',
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.4))',
-              border: '1px solid var(--border-strong)',
+          <div
+            style={{
+              width: 56,
+              height: 56,
+              borderRadius: 14,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "var(--accent)",
+              marginBottom: 24,
             }}
           >
-            <svg viewBox="0 0 24 24" fill="none" className="text-[#0284c7]" style={{ width: '1.75rem', height: '1.75rem' }} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" style={{ width: 24, height: 24, color: "#fff" }} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
               <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
             </svg>
           </div>
-          <h1 className="font-extrabold tracking-tight" style={{ color: 'var(--text)', fontSize: '1.75rem', marginBottom: '0.5rem', lineHeight: '1.2' }}>Acesso Restrito</h1>
-          <p className="text-center font-medium" style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '2rem', lineHeight: '1.4' }}>Digite a senha para acessar o Tradutor de Voz.</p>
-          
-          <form onSubmit={handleLogin} className="w-full flex flex-col" style={{ gap: '1rem' }}>
+
+          <h1 style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--text)", marginBottom: 8, textAlign: "center" }}>
+            Acesso Restrito
+          </h1>
+          <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", textAlign: "center", marginBottom: 28, lineHeight: 1.5 }}>
+            Digite a senha para acessar o Tradutor de Voz.
+          </p>
+
+          <form onSubmit={handleLogin} style={{ width: "100%", display: "flex", flexDirection: "column", gap: 14 }}>
             <div>
               <input
                 type="password"
@@ -172,27 +199,34 @@ export default function Home() {
                   setPasswordInput(e.target.value);
                   setAuthError(false);
                 }}
-                className={`w-full rounded-2xl outline-none transition-all shadow-inner`}
-                style={{ 
-                  padding: '1rem 1.25rem', 
-                  backgroundColor: authError ? 'var(--red-dim)' : 'rgba(255,255,255,0.7)',
-                  border: authError ? '1px solid var(--red)' : '1px solid var(--border-strong)',
-                  color: 'var(--text)',
+                style={{
+                  width: "100%",
+                  padding: "14px 16px",
+                  borderRadius: 12,
+                  border: authError ? "1px solid var(--red)" : "1px solid var(--border-strong)",
+                  background: authError ? "var(--red-dim)" : "var(--surface)",
+                  color: "var(--text)",
+                  outline: "none",
+                  fontSize: "1rem",
                 }}
               />
-              {authError && <p className="text-red-500" style={{ fontSize: '0.75rem', marginTop: '0.5rem', marginLeft: '0.25rem' }}>Senha incorreta</p>}
+              {authError && <p style={{ color: "var(--red)", fontSize: 12, marginTop: 6, marginLeft: 4 }}>Senha incorreta</p>}
             </div>
             <button
               type="submit"
-              className="w-full font-bold rounded-2xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
-              style={{ 
-                padding: '1rem 0', 
-                background: 'linear-gradient(135deg, #0ea5e9, #0284c7)',
-                color: '#ffffff',
-                border: 'none',
+              style={{
+                width: "100%",
+                padding: "14px 0",
+                borderRadius: 12,
+                background: "var(--accent)",
+                color: "#fff",
+                fontWeight: 700,
+                fontSize: "0.95rem",
+                border: "none",
+                cursor: "pointer",
               }}
             >
-              Autenticar
+              Entrar
             </button>
           </form>
         </div>
@@ -200,16 +234,28 @@ export default function Home() {
     );
   }
 
+  /* ──────────── TELA PRINCIPAL ──────────── */
   return (
-    <main className="flex flex-col items-center px-[10px] w-full max-w-[560px] relative z-10 pt-8 pb-20 min-h-screen" style={{ margin: '0 auto' }}>
+    <main
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "100%",
+        maxWidth: 560,
+        margin: "0 auto",
+        padding: "40px 16px 80px",
+        minHeight: "100dvh",
+      }}
+    >
       <Header />
 
-      <div className="flex flex-col flex-1 items-center w-full gap-6">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", gap: 24, flex: 1 }}>
         {/* Container principal de gravação */}
-        <div className="flex flex-col items-center gap-6 w-full mb-6">
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 24, width: "100%", marginBottom: 24 }}>
           <Timer seconds={seconds} visible={isRecording} />
 
-          <div className="w-full relative min-h-[52px]">
+          <div style={{ width: "100%", position: "relative", minHeight: 52 }}>
             <Waveform stream={stream} visible={isRecording} />
           </div>
 
@@ -228,7 +274,7 @@ export default function Home() {
         />
 
         {/* Resultados */}
-        <div className="w-full flex-col flex gap-4 mt-4">
+        <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: 16, marginTop: 16 }}>
           <TranscriptCard
             type="original"
             language={store.detectedLanguage || "???"}
@@ -247,14 +293,26 @@ export default function Home() {
         </div>
       </div>
 
-      <footer className="w-full text-center text-[10px] uppercase tracking-[0.1em] font-[family-name:var(--font-dm-mono)] mt-auto pt-8 pb-4" style={{ color: "var(--text-muted)" }}>
-        <span className="block mb-1">Desenvolvido por</span>
-        <a 
-          href="https://nathanquiem.com.br" 
-          target="_blank" 
+      <footer
+        style={{
+          width: "100%",
+          textAlign: "center",
+          fontSize: 10,
+          textTransform: "uppercase",
+          letterSpacing: "0.1em",
+          color: "var(--text-muted)",
+          marginTop: "auto",
+          paddingTop: 32,
+          paddingBottom: 16,
+        }}
+        className="font-[family-name:var(--font-dm-mono)]"
+      >
+        <span style={{ display: "block", marginBottom: 4 }}>Desenvolvido por</span>
+        <a
+          href="https://nathanquiem.com.br"
+          target="_blank"
           rel="noopener noreferrer"
-          className="font-medium hover:opacity-70 transition-opacity"
-          style={{ color: "var(--accent)" }}
+          style={{ color: "var(--accent)", fontWeight: 500 }}
         >
           Nathan Quiem
         </a>

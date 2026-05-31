@@ -3,13 +3,13 @@
 :root {
   color-scheme: light !important;
   --bg: #ffffff;
-  --surface: #ffffff;
-  --surface2: #f9fafb;
+  --surface: #f9f9f9;
+  --surface2: #f0f0f0;
   --border: rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(0, 0, 0, 0.12);
+  --border-strong: rgba(0, 0, 0, 0.15);
   --text: #171717;
-  --text-muted: rgba(23, 23, 42, 0.55);
-  --text-dim: rgba(23, 23, 42, 0.35);
+  --text-muted: rgba(23, 23, 23, 0.55);
+  --text-dim: rgba(23, 23, 23, 0.35);
   --accent: #222222;
   --accent-dim: rgba(34, 34, 34, 0.08);
   --accent-border: rgba(34, 34, 34, 0.25);
@@ -17,8 +17,8 @@
   --green-dim: rgba(74, 156, 113, 0.1);
   --red: #d95843;
   --red-dim: rgba(217, 88, 67, 0.1);
-  --radius: 20px;
-  --radius-sm: 12px;
+  --radius: 12px;
+  --radius-sm: 8px;
 }
 
 *,
@@ -34,24 +34,6 @@ html, body {
   color: var(--text) !important;
   min-height: 100vh;
   overflow-x: hidden;
-  position: relative;
-}
-
-/* Subtle Moving Dot Background */
-body::before {
-  content: "";
-  position: fixed;
-  inset: -50px;
-  background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1.5px, transparent 1.5px);
-  background-size: 32px 32px;
-  animation: moveDots 40s linear infinite;
-  pointer-events: none;
-  z-index: -1;
-}
-
-@keyframes moveDots {
-  0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(-32px) translateX(-32px); }
 }
 
 /* Scrollbar styling */
@@ -59,9 +41,9 @@ body::before {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(15, 23, 42, 0.2);
+  background: var(--border-strong);
   border-radius: 3px;
 }

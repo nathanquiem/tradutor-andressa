@@ -12,7 +12,7 @@ export default function Header() {
     >
       <h1
         className="text-[28px] font-extrabold tracking-[-0.04em]"
-        style={{ color: "var(--text)" }}
+        style={{ color: "var(--accent)" }}
       >
         tradutor de voz
       </h1>

@@ -19,7 +19,7 @@ export default function RecordButton({
       disabled={isProcessing}
       whileHover={!isProcessing ? { scale: 1.06 } : undefined}
       whileTap={!isProcessing ? { scale: 0.95 } : undefined}
-      className="relative w-[88px] h-[88px] rounded-full flex items-center justify-center outline-none cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed transition-shadow shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
+      className="relative w-[88px] h-[88px] rounded-full flex items-center justify-center outline-none cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
       style={{
         background: isRecording ? "var(--red-dim)" : "var(--surface)",
         border: `1.5px solid ${isRecording ? "var(--red)" : "var(--border-strong)"}`,

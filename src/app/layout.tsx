@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { Syne, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { PWAInstallBanner } from "@/components/PWAInstallBanner";
+import ConfettiBackground from "@/components/effects/ConfettiBackground";
 
 import type { Viewport } from "next";
 
 export const viewport: Viewport = {
-  themeColor: "#222222",
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -50,8 +51,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={`${syne.variable} ${dmMono.variable}`}>
-      <body className="font-[family-name:var(--font-syne)] flex flex-col items-center justify-center min-h-[100dvh] antialiased py-8">
-        {children}
+      <body className="font-[family-name:var(--font-syne)] antialiased">
+        <ConfettiBackground />
+        <div style={{ position: "relative", zIndex: 1, minHeight: "100dvh", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          {children}
+        </div>
         <PWAInstallBanner />
         <script
           dangerouslySetInnerHTML={{
