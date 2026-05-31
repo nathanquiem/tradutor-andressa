@@ -276,14 +276,14 @@ export default function Home() {
 
         {/* Resultados */}
         <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: 24, marginTop: 0 }}>
+          <AudioPlayer audioUrl={store.audioUrl} visible={Boolean(store.audioUrl)} />
+
           <TranscriptCard
             type="original"
             language={store.detectedLanguage || "???"}
             text={store.originalText}
             visible={showResults}
           />
-
-          <AudioPlayer audioUrl={store.audioUrl} visible={Boolean(store.audioUrl)} />
 
           <TranscriptCard
             type="translated"
